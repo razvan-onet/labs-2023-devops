@@ -1,0 +1,36 @@
+name: Frontend Cloud Deployment
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Initial checkout
+      uses: actions/checkout@v3
+
+    - name: Set up npm
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.13.0
+
+    - name: Install dependencies
+      run: npm install --force
+
+    - name: Build app
+      run: npm run build
+
+    - name: Transfer the compiled files
+      uses: appleboy/scp-action@master
+      with:
+        rm: true
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        strip_components: 2
+        source: "dist/devops-labs-frontend/*"
+        target: "/home/ubuntu/frontend/"
