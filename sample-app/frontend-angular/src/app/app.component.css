@@ -1,0 +1,35 @@
+.containerInfo {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin-left: 38%
+}
+
+.unicorn {
+  margin-left: 110px;
+  margin-top: 200px;
+  cursor: pointer;
+}
+
+.logo {
+    padding-top: 100px;
+}
+
+.coverImg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.counter {
+    color: white;
+    font-size: 40px;
+    margin-top: 400px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: 48%;
+}
